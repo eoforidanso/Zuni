@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
-import { SlidersHorizontal, X, BedDouble } from 'lucide-react'
+import { SlidersHorizontal, X, BedDouble, ChevronDown } from 'lucide-react'
 import RoomCard from '../components/RoomCard'
 import BookingWidget from '../components/BookingWidget'
 import { rooms } from '../data/rooms'
@@ -34,6 +34,7 @@ export default function Rooms() {
   const [activeFilter, setActiveFilter] = useState('all')
   const [activeSort, setActiveSort] = useState('price-asc')
   const [maxPrice, setMaxPrice] = useState(1000)
+  const [showFilters, setShowFilters] = useState(false)
 
   const filteredRooms = useMemo(() => {
     return rooms
@@ -84,11 +85,80 @@ export default function Rooms() {
       </div>
 
       {/* Body */}
-      <section className="py-16 bg-cream min-h-screen">
+      <section className="py-10 sm:py-16 bg-cream min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Mobile filter toggle */}
+          <div className="flex items-center justify-between mb-5 lg:hidden">
+            <p className="text-muted text-sm">
+              <span className="font-semibold text-charcoal">{filteredRooms.length}</span> apartment{filteredRooms.length !== 1 ? 's' : ''}
+            </p>
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              className="flex items-center gap-2 bg-white border border-border rounded-xl px-4 py-2.5 text-sm font-semibold text-charcoal shadow-sm hover:border-coral hover:text-coral transition-all duration-200"
+            >
+              <SlidersHorizontal size={14} className="text-coral" />
+              Filters
+              {(activeFilter !== 'all' || maxPrice !== 1000) && (
+                <span className="w-5 h-5 rounded-full bg-coral text-white text-[10px] font-bold flex items-center justify-center">
+                  {(activeFilter !== 'all' ? 1 : 0) + (maxPrice !== 1000 ? 1 : 0)}
+                </span>
+              )}
+              <ChevronDown size={14} className={`transition-transform duration-200 ${showFilters ? 'rotate-180' : ''}`} />
+            </button>
+          </div>
+
+          {/* Mobile filter panel */}
+          <div className={`lg:hidden overflow-hidden transition-all duration-300 ${showFilters ? 'max-h-[600px] opacity-100 mb-6' : 'max-h-0 opacity-0'}`}>
+            <div className="bg-white rounded-2xl shadow-card p-5">
+              <div className="grid grid-cols-2 gap-5">
+                {/* Type filter */}
+                <div>
+                  <p className="text-xs font-semibold text-muted uppercase tracking-wide mb-2">Room Type</p>
+                  <div className="flex flex-wrap gap-2">
+                    {filterOptions.map((opt) => (
+                      <button
+                        key={opt.value}
+                        onClick={() => setActiveFilter(opt.value)}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 ${
+                          activeFilter === opt.value ? 'bg-coral text-white' : 'bg-soft-gray text-charcoal hover:bg-coral/10'
+                        }`}
+                      >
+                        {opt.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                {/* Sort */}
+                <div>
+                  <p className="text-xs font-semibold text-muted uppercase tracking-wide mb-2">Sort By</p>
+                  <select
+                    value={activeSort}
+                    onChange={(e) => setActiveSort(e.target.value)}
+                    className="input-field text-xs py-2"
+                  >
+                    {sortOptions.map((opt) => (
+                      <option key={opt.value} value={opt.value}>{opt.label}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              {/* Price range */}
+              <div className="mt-4">
+                <p className="text-xs font-semibold text-muted uppercase tracking-wide mb-2">Max Price · <span className="text-coral">₵{maxPrice}</span></p>
+                <input type="range" min={300} max={1000} step={50} value={maxPrice} onChange={(e) => setMaxPrice(Number(e.target.value))} className="w-full accent-coral" />
+              </div>
+              {(activeFilter !== 'all' || maxPrice !== 1000) && (
+                <button onClick={() => { setActiveFilter('all'); setMaxPrice(1000) }} className="mt-3 flex items-center gap-1.5 text-xs text-coral font-semibold hover:underline">
+                  <X size={12} /> Clear Filters
+                </button>
+              )}
+            </div>
+          </div>
+
           <div className="flex flex-col lg:flex-row gap-8">
-            {/* Sidebar filters */}
-            <aside className="w-full lg:w-64 flex-shrink-0">
+            {/* Sidebar filters — desktop only */}
+            <aside className="hidden lg:block w-64 flex-shrink-0">
               <div className="bg-white rounded-2xl shadow-card p-6 sticky top-32">
                 <h3 className="font-semibold text-charcoal mb-5 flex items-center gap-2">
                   <SlidersHorizontal size={16} className="text-coral" />
@@ -171,7 +241,7 @@ export default function Rooms() {
 
             {/* Room grid */}
             <div className="flex-1">
-              <div className="flex items-center justify-between mb-6">
+              <div className="hidden lg:flex items-center justify-between mb-6">
                 <p className="text-muted text-sm">
                   Showing <span className="font-semibold text-charcoal">{filteredRooms.length}</span> apartment{filteredRooms.length !== 1 ? 's' : ''}
                   {checkIn && checkOut && (

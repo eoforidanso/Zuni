@@ -93,20 +93,20 @@ export default function GallerySection() {
         </ScrollReveal>
 
         {/* Masonry Grid */}
-        <div className="grid grid-cols-3 gap-3 sm:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
           {photos.map((photo, i) => (
-            <ScrollReveal key={photo.src} delay={i * 80} direction="scale" className={photo.span}>
+            <ScrollReveal key={photo.src} delay={i * 80} direction="scale" className={`${photo.span} ${photo.span === 'col-span-2' ? 'col-span-2' : ''}`}>
               <button
                 onClick={() => openLightbox(i)}
-                className={`relative group overflow-hidden rounded-2xl w-full block ${
-                  photo.src === '/hero.jpg' || photo.src === '/kitchen.jpg' ? 'h-56 sm:h-64' : 'h-48 sm:h-56'
+                className={`relative group overflow-hidden rounded-xl sm:rounded-2xl w-full block ${
+                  photo.src === '/hero.jpg' || photo.src === '/kitchen.jpg' ? 'h-44 sm:h-56 md:h-64' : 'h-36 sm:h-48 md:h-56'
                 }`}
                 aria-label={`View ${photo.label}`}
               >
                 <img
                   src={photo.src}
                   alt={photo.alt}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   style={{ '--tw-scale-x': 1.08, '--tw-scale-y': 1.08 }}
                 />
                 {/* Hover overlay */}

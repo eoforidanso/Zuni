@@ -26,8 +26,7 @@ export default function RoomCard({ room }) {
         <img
           src={image}
           alt={name}
-          className="w-full h-full object-cover transition-transform duration-600 group-hover:scale-108"
-          style={{ transitionDuration: '600ms' }}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
 
         {/* Always-visible gradient overlay at bottom */}

@@ -60,7 +60,21 @@ export default function RoomDetail() {
   const relatedRooms = rooms.filter((r) => r.id !== room.id).slice(0, 3)
 
   return (
-    <div className="bg-cream min-h-screen pt-20">
+    <div className="bg-cream min-h-screen pt-20 pb-24 lg:pb-0">
+      {/* Mobile sticky bottom booking bar */}
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-border px-4 py-3 flex items-center justify-between shadow-luxury">
+        <div>
+          <span className="font-serif text-xl font-bold text-charcoal">{room.currency}{room.price.toLocaleString()}</span>
+          <span className="text-muted text-xs ml-1">/night</span>
+        </div>
+        <button
+          onClick={scrollToBooking}
+          className="btn-primary py-2.5 px-5 text-sm"
+        >
+          Book This Room
+          <ArrowRight size={14} />
+        </button>
+      </div>
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
         <div className="flex items-center gap-2 text-sm text-muted">
@@ -111,12 +125,12 @@ export default function RoomDetail() {
               )}
             </div>
             {/* Thumbnails */}
-            <div className="flex gap-3 mb-8">
+            <div className="flex gap-2 sm:gap-3 mb-8 overflow-x-auto scrollbar-hide pb-1">
               {room.gallery.map((img, i) => (
                 <button
                   key={i}
                   onClick={() => setActiveImg(i)}
-                  className={`w-20 h-16 rounded-xl overflow-hidden flex-shrink-0 transition-all duration-150 ${
+                  className={`w-16 h-12 sm:w-20 sm:h-16 rounded-lg sm:rounded-xl overflow-hidden flex-shrink-0 transition-all duration-150 ${
                     i === activeImg ? 'ring-2 ring-coral ring-offset-2' : 'opacity-60 hover:opacity-90'
                   }`}
                 >
@@ -219,7 +233,7 @@ export default function RoomDetail() {
           </div>
 
           {/* Right: booking widget */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1" id="booking">
             <div className="sticky top-28 space-y-5">
               <BookingWidget className="!bg-white !rounded-2xl shadow-luxury" />
 
@@ -280,4 +294,8 @@ export default function RoomDetail() {
       </div>
     </div>
   )
+}
+
+function scrollToBooking() {
+  document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })
 }
