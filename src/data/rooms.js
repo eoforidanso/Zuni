@@ -1,0 +1,118 @@
+export const rooms = [
+  {
+    id: 1,
+    slug: 'studio-apartment',
+    name: 'Studio Apartment',
+    tagline: 'Compact Luxury, Maximum Comfort',
+    description:
+      'A thoughtfully designed studio combining sleeping, living, and dining in one elegant space. Perfect for solo travelers or couples seeking a modern home-away-from-home experience in Sunyani.',
+    longDescription:
+      'Our Studio Apartment is the ideal choice for smart travelers who appreciate efficient design without compromising on quality. The space features a king-size Murphy bed, a fully fitted kitchenette, a work desk, and a stylish bathroom with premium fixtures. Every detail has been carefully curated to ensure your stay is both productive and relaxing.',
+    price: 350,
+    currency: '₵',
+    capacity: 2,
+    beds: 1,
+    bedType: 'King Murphy Bed',
+    baths: 1,
+    size: 35,
+    floor: 1,
+    badge: null,
+    image:
+      'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=900&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=900&q=80',
+    ],
+    amenities: ['AC', 'WiFi', 'Kitchen', 'Backup Power', 'Security', 'Parking'],
+    highlights: ['Smart TV', 'Work Desk', 'En-suite Bathroom', 'Daily Housekeeping'],
+    available: true,
+  },
+  {
+    id: 2,
+    slug: 'one-bedroom-deluxe',
+    name: '1 Bedroom Deluxe',
+    tagline: 'Space, Style & Serenity',
+    description:
+      'Generously sized with a separate bedroom and open-plan living area. Ideal for professionals, couples, or extended stays seeking comfort and privacy in the heart of Sunyani.',
+    longDescription:
+      'The 1 Bedroom Deluxe apartment strikes the perfect balance between spaciousness and intimacy. Featuring a separate master bedroom with a queen bed, an open-plan living and dining area, a fully equipped kitchen, and a luxurious bathroom, this suite is designed for those who enjoy the comforts of home with hotel-level service.',
+    price: 450,
+    currency: '₵',
+    capacity: 3,
+    beds: 1,
+    bedType: 'Queen Bed',
+    baths: 1,
+    size: 55,
+    floor: 2,
+    badge: 'Popular',
+    image:
+      'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=900&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1556020685-ae41abfc9365?auto=format&fit=crop&w=900&q=80',
+    ],
+    amenities: ['AC', 'WiFi', 'Kitchen', 'Backup Power', 'Security', 'Parking'],
+    highlights: ['Smart TV', 'Dining Area', 'Walk-in Closet', 'Daily Housekeeping'],
+    available: true,
+  },
+  {
+    id: 3,
+    slug: 'two-bedroom-suite',
+    name: '2 Bedroom Suite',
+    tagline: 'Premium Living for Families & Groups',
+    description:
+      'Our signature 2-bedroom suite offers two private bedrooms, a spacious lounge, a full kitchen, and premium finishes throughout — the ultimate home for families or business travelers.',
+    longDescription:
+      'The 2 Bedroom Suite is Zuni Apartments\' flagship offering. With two generously appointed bedrooms, a full living and dining space, and a professional-grade kitchen, it accommodates families and groups with ease. The master bedroom features an en-suite bathroom, while the second bedroom is served by a stylish guest bathroom. Premium finishes, smart home features, and panoramic views make this suite truly exceptional.',
+    price: 600,
+    currency: '₵',
+    capacity: 5,
+    beds: 2,
+    bedType: 'King + Queen Beds',
+    baths: 2,
+    size: 85,
+    floor: 3,
+    badge: 'Best Value',
+    image:
+      'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=900&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80',
+    ],
+    amenities: ['AC', 'WiFi', 'Kitchen', 'Backup Power', 'Security', 'Parking'],
+    highlights: ['2 Smart TVs', 'Full Dining Suite', 'En-suite Bathrooms', 'Panoramic View'],
+    available: true,
+  },
+  {
+    id: 4,
+    slug: 'penthouse-suite',
+    name: 'Penthouse Suite',
+    tagline: 'The Pinnacle of Luxury',
+    description:
+      'An unrivalled penthouse experience with sweeping views of Sunyani, premium furnishings, a private terrace, and bespoke concierge service — reserved for those who expect nothing less than perfection.',
+    longDescription:
+      'The Penthouse Suite redefines luxury in Sunyani. Occupying the top floor exclusively, this extraordinary residence features a master suite with a private en-suite spa, a second VIP bedroom, an expansive open-plan living and entertaining space, a gourmet kitchen, and a private wrap-around terrace with panoramic views of Sunyani and the surrounding Bono Region. Bespoke concierge, chauffeur service, and personalised amenities are included.',
+    price: 900,
+    currency: '₵',
+    capacity: 6,
+    beds: 2,
+    bedType: 'King + Twin Beds',
+    baths: 2,
+    size: 120,
+    floor: 5,
+    badge: 'Premium',
+    image:
+      'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=900&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80',
+    ],
+    amenities: ['AC', 'WiFi', 'Kitchen', 'Backup Power', 'Security', 'Parking'],
+    highlights: ['Private Terrace', 'Spa Bathroom', 'Concierge Service', 'Wine & Minibar'],
+    available: true,
+  },
+]

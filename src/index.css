@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-charcoal bg-cream antialiased;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-coral hover:bg-coral-dark text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 inline-flex items-center gap-2;
+  }
+
+  .btn-outline {
+    @apply border-2 border-coral text-coral hover:bg-coral hover:text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 inline-flex items-center gap-2;
+  }
+
+  .btn-gold {
+    @apply bg-gold hover:bg-gold-dark text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 inline-flex items-center gap-2;
+  }
+
+  .section-tag {
+    @apply text-coral font-semibold text-sm tracking-widest uppercase;
+  }
+
+  .section-title {
+    @apply font-serif text-charcoal text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight;
+  }
+
+  .section-subtitle {
+    @apply text-muted text-base md:text-lg leading-relaxed max-w-2xl;
+  }
+
+  .input-field {
+    @apply w-full border border-border rounded-lg px-4 py-3 text-charcoal placeholder-muted focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent transition-all duration-200 bg-white;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-card overflow-hidden transition-all duration-300 hover:shadow-luxury hover:-translate-y-1;
+  }
+
+  .amenity-badge {
+    @apply flex items-center gap-1.5 text-muted text-xs font-medium;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-hero-overlay {
+    background: linear-gradient(to bottom, rgba(26,26,26,0.50) 0%, rgba(26,26,26,0.25) 40%, rgba(26,26,26,0.70) 100%);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Custom range slider */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+/* Smooth page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
