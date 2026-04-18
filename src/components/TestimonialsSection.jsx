@@ -72,15 +72,15 @@ export default function TestimonialsSection() {
           {visible.map((t, i) => (
             <div
               key={`${t.id}-${i}`}
-              className={`bg-white/5 border border-white/10 rounded-2xl p-7 transition-all duration-300 ${
-                i === 0 ? 'md:bg-white/10 md:border-white/20' : ''
+              className={`glass-charcoal gradient-border rounded-2xl p-7 transition-all duration-300 hover:scale-[1.02] shimmer-overlay ${
+                i === 0 ? 'ring-1 ring-coral/30' : ''
               }`}
             >
               {/* Quote icon */}
-              <Quote size={28} className="text-coral mb-4 opacity-80" />
+              <Quote size={26} className="text-coral mb-4 opacity-70" />
 
               {/* Review */}
-              <p className="text-white/80 text-sm leading-relaxed mb-6 line-clamp-5">
+              <p className="text-white/75 text-sm leading-relaxed mb-6 line-clamp-5">
                 "{t.review}"
               </p>
 
@@ -90,16 +90,16 @@ export default function TestimonialsSection() {
               {/* Author */}
               <div className="flex items-center gap-3 mt-5 pt-5 border-t border-white/10">
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold text-sm flex-shrink-0 ${t.avatarColor}`}
+                  className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 ring-2 ring-white/10 ${t.avatarColor}`}
                 >
                   {t.avatar}
                 </div>
                 <div>
                   <div className="text-white font-semibold text-sm">{t.name}</div>
-                  <div className="text-white/50 text-xs">{t.role} · {t.location}</div>
+                  <div className="text-white/45 text-xs">{t.role} · {t.location}</div>
                 </div>
-                <div className="ml-auto">
-                  <span className="text-white/30 text-xs">{t.date}</span>
+                <div className="ml-auto text-right">
+                  <span className="text-white/25 text-xs">{t.date}</span>
                 </div>
               </div>
             </div>

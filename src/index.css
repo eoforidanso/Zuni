@@ -2,91 +2,232 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Google Fonts are loaded in index.html ─── */
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
-
   body {
     @apply font-sans text-charcoal bg-cream antialiased;
   }
-
   h1, h2, h3, h4, h5 {
     @apply font-serif;
+  }
+  ::selection {
+    background: rgba(255, 56, 92, 0.18);
   }
 }
 
 @layer components {
+  /* ── Buttons ── */
   .btn-primary {
-    @apply bg-coral hover:bg-coral-dark text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 inline-flex items-center gap-2;
+    @apply bg-coral hover:bg-coral-dark text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 hover:shadow-glow-coral hover:-translate-y-0.5 active:translate-y-0 inline-flex items-center gap-2;
   }
-
   .btn-outline {
-    @apply border-2 border-coral text-coral hover:bg-coral hover:text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 inline-flex items-center gap-2;
+    @apply border-2 border-coral text-coral hover:bg-coral hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 inline-flex items-center gap-2;
   }
-
   .btn-gold {
-    @apply bg-gold hover:bg-gold-dark text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 inline-flex items-center gap-2;
+    @apply bg-gold hover:bg-gold-dark text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 hover:shadow-glow-gold hover:-translate-y-0.5 active:translate-y-0 inline-flex items-center gap-2;
+  }
+  .btn-glass {
+    @apply glass-white font-semibold px-6 py-3 rounded-xl text-white transition-all duration-200 hover:bg-white/20 inline-flex items-center gap-2;
   }
 
+  /* ── Typography ── */
   .section-tag {
-    @apply text-coral font-semibold text-sm tracking-widest uppercase;
+    @apply text-coral font-semibold text-xs tracking-[0.18em] uppercase;
   }
-
   .section-title {
     @apply font-serif text-charcoal text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight;
   }
-
   .section-subtitle {
     @apply text-muted text-base md:text-lg leading-relaxed max-w-2xl;
   }
+  .gradient-text {
+    background: linear-gradient(135deg, #FF385C 0%, #C8A850 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gold-text {
+    background: linear-gradient(135deg, #C8A850 0%, #DFBe72 50%, #C8A850 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
+  /* ── Forms ── */
   .input-field {
-    @apply w-full border border-border rounded-lg px-4 py-3 text-charcoal placeholder-muted focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent transition-all duration-200 bg-white;
+    @apply w-full border border-border rounded-xl px-4 py-3 text-charcoal placeholder-muted focus:outline-none focus:ring-2 focus:ring-coral/40 focus:border-coral transition-all duration-200 bg-white;
+  }
+  .input-glass {
+    @apply w-full bg-white/10 border border-white/25 rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 focus:bg-white/15 transition-all duration-200;
   }
 
+  /* ── Cards ── */
   .card {
-    @apply bg-white rounded-2xl shadow-card overflow-hidden transition-all duration-300 hover:shadow-luxury hover:-translate-y-1;
+    @apply bg-white rounded-2xl shadow-card overflow-hidden transition-all duration-300 hover:shadow-luxury hover:-translate-y-1.5;
   }
-
   .amenity-badge {
     @apply flex items-center gap-1.5 text-muted text-xs font-medium;
   }
 }
 
+/* ── Glassmorphism ── */
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  /* Subtle glass (on dark / image backgrounds) */
+  .glass-white {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+  }
+  /* Medium glass */
+  .glass-md {
+    background: rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.32);
+  }
+  /* Frosted card (on light / cream backgrounds) */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.8);
+  }
+  /* Dark frosted glass */
+  .glass-dark {
+    background: rgba(15, 15, 15, 0.55);
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.30);
+  }
+  /* Charcoal testimonial glass */
+  .glass-charcoal {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.10);
   }
 
+  /* ── Scroll Reveal ── */
+  .reveal {
+    opacity: 0;
+    transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-up    { transform: translateY(40px); }
+  .reveal-down  { transform: translateY(-30px); }
+  .reveal-left  { transform: translateX(-40px); }
+  .reveal-right { transform: translateX(40px); }
+  .reveal-scale { transform: scale(0.92); }
+
+  .reveal.reveal-visible {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+  }
+
+  /* Stagger delays */
+  .reveal-d1 { transition-delay: 0.10s; }
+  .reveal-d2 { transition-delay: 0.20s; }
+  .reveal-d3 { transition-delay: 0.30s; }
+  .reveal-d4 { transition-delay: 0.45s; }
+  .reveal-d5 { transition-delay: 0.60s; }
+
+  /* ── Gradients & Overlays ── */
   .bg-hero-overlay {
-    background: linear-gradient(to bottom, rgba(26,26,26,0.50) 0%, rgba(26,26,26,0.25) 40%, rgba(26,26,26,0.70) 100%);
+    background: linear-gradient(
+      to right,
+      rgba(10, 10, 10, 0.88) 0%,
+      rgba(10, 10, 10, 0.52) 50%,
+      rgba(10, 10, 10, 0.18) 100%
+    );
   }
 
+  /* ── Decorative blobs ── */
+  .blob {
+    border-radius: 50%;
+    filter: blur(80px);
+    position: absolute;
+    pointer-events: none;
+  }
+
+  /* ── Shimmer overlay (for glass cards) ── */
+  .shimmer-overlay {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255,255,255,0.10) 50%,
+      transparent 60%
+    );
+    transform: translateX(-100%);
+    animation: shimmer 3s infinite;
+  }
+
+  /* ── Scrollbar ── */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
 
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
+  /* ── Misc ── */
+  .text-balance { text-wrap: balance; }
 }
 
-/* Custom range slider */
+/* ── Custom date input ── */
 input[type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0.6;
+  opacity: 0.55;
   cursor: pointer;
+  filter: invert(0.4);
 }
 
-/* Smooth page transitions */
-.page-enter {
-  opacity: 0;
-  transform: translateY(10px);
+/* ── Custom range (price slider) ── */
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 4px;
+  border-radius: 4px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #FF385C;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255,56,92,0.4);
 }
 
-.page-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 300ms, transform 300ms;
+/* ── Lightbox body lock ── */
+body.lightbox-open {
+  overflow: hidden;
+}
+
+/* ── Gradient border (glass card accent) ── */
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,56,92,0.5), rgba(200,168,80,0.5));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
 }

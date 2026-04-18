@@ -129,18 +129,23 @@ export default function BookingWidget({ className = '', compact = false }) {
     )
   }
 
-  // Hero variant — dark/glass style
+  // Hero variant — glassmorphism dark style
   return (
     <form
       onSubmit={handleSearch}
-      className={`bg-white/95 backdrop-blur-sm rounded-2xl shadow-luxury p-6 ${className}`}
+      className={`glass-dark rounded-2xl shadow-glass p-6 ${className}`}
     >
-      <h3 className="font-serif text-lg font-semibold text-charcoal mb-5">Book Your Stay</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-5">
+        <h3 className="font-serif text-lg font-semibold text-white">Book Your Stay</h3>
+        <span className="text-white/40 text-xs">Sunyani, Ghana</span>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
         {/* Check-in */}
         <div>
-          <label className="block text-xs font-semibold text-muted uppercase tracking-wide mb-1.5">
-            <Calendar size={11} className="inline mr-1 text-coral" />
+          <label className="flex items-center gap-1 text-[10px] font-semibold text-white/55 uppercase tracking-widest mb-1.5">
+            <Calendar size={10} className="text-gold-light" />
             Check In
           </label>
           <input
@@ -148,13 +153,13 @@ export default function BookingWidget({ className = '', compact = false }) {
             value={checkIn}
             min={today}
             onChange={(e) => setCheckIn(e.target.value)}
-            className="input-field text-sm"
+            className="input-glass text-sm"
           />
         </div>
         {/* Check-out */}
         <div>
-          <label className="block text-xs font-semibold text-muted uppercase tracking-wide mb-1.5">
-            <Calendar size={11} className="inline mr-1 text-coral" />
+          <label className="flex items-center gap-1 text-[10px] font-semibold text-white/55 uppercase tracking-widest mb-1.5">
+            <Calendar size={10} className="text-gold-light" />
             Check Out
           </label>
           <input
@@ -162,64 +167,65 @@ export default function BookingWidget({ className = '', compact = false }) {
             value={checkOut}
             min={checkIn || today}
             onChange={(e) => setCheckOut(e.target.value)}
-            className="input-field text-sm"
+            className="input-glass text-sm"
           />
         </div>
         {/* Adults */}
         <div>
-          <label className="block text-xs font-semibold text-muted uppercase tracking-wide mb-1.5">
-            <Users size={11} className="inline mr-1 text-coral" />
+          <label className="flex items-center gap-1 text-[10px] font-semibold text-white/55 uppercase tracking-widest mb-1.5">
+            <Users size={10} className="text-gold-light" />
             Adults
           </label>
-          <div className="flex items-center gap-3 border border-border rounded-lg px-4 py-3 bg-white">
+          <div className="flex items-center gap-3 bg-white/10 border border-white/20 rounded-xl px-4 py-3">
             <button
               type="button"
               onClick={() => setAdults(Math.max(1, adults - 1))}
-              className="w-6 h-6 rounded-full border border-border flex items-center justify-center text-muted hover:border-coral hover:text-coral transition-colors duration-150"
+              className="w-6 h-6 rounded-full border border-white/25 flex items-center justify-center text-white/60 hover:border-white/60 hover:text-white transition-colors duration-150"
             >
-              <Minus size={11} />
+              <Minus size={10} />
             </button>
-            <span className="flex-1 text-center text-sm font-semibold">{adults}</span>
+            <span className="flex-1 text-center text-sm font-semibold text-white">{adults}</span>
             <button
               type="button"
               onClick={() => setAdults(adults + 1)}
-              className="w-6 h-6 rounded-full border border-border flex items-center justify-center text-muted hover:border-coral hover:text-coral transition-colors duration-150"
+              className="w-6 h-6 rounded-full border border-white/25 flex items-center justify-center text-white/60 hover:border-white/60 hover:text-white transition-colors duration-150"
             >
-              <Plus size={11} />
+              <Plus size={10} />
             </button>
           </div>
         </div>
         {/* Rooms */}
         <div>
-          <label className="block text-xs font-semibold text-muted uppercase tracking-wide mb-1.5">
-            <Home size={11} className="inline mr-1 text-coral" />
+          <label className="flex items-center gap-1 text-[10px] font-semibold text-white/55 uppercase tracking-widest mb-1.5">
+            <Home size={10} className="text-gold-light" />
             Rooms
           </label>
-          <div className="flex items-center gap-3 border border-border rounded-lg px-4 py-3 bg-white">
+          <div className="flex items-center gap-3 bg-white/10 border border-white/20 rounded-xl px-4 py-3">
             <button
               type="button"
               onClick={() => setRooms(Math.max(1, rooms - 1))}
-              className="w-6 h-6 rounded-full border border-border flex items-center justify-center text-muted hover:border-coral hover:text-coral transition-colors duration-150"
+              className="w-6 h-6 rounded-full border border-white/25 flex items-center justify-center text-white/60 hover:border-white/60 hover:text-white transition-colors duration-150"
             >
-              <Minus size={11} />
+              <Minus size={10} />
             </button>
-            <span className="flex-1 text-center text-sm font-semibold">{rooms}</span>
+            <span className="flex-1 text-center text-sm font-semibold text-white">{rooms}</span>
             <button
               type="button"
               onClick={() => setRooms(rooms + 1)}
-              className="w-6 h-6 rounded-full border border-border flex items-center justify-center text-muted hover:border-coral hover:text-coral transition-colors duration-150"
+              className="w-6 h-6 rounded-full border border-white/25 flex items-center justify-center text-white/60 hover:border-white/60 hover:text-white transition-colors duration-150"
             >
-              <Plus size={11} />
+              <Plus size={10} />
             </button>
           </div>
         </div>
       </div>
-      <button type="submit" className="btn-primary w-full justify-center py-3.5">
+
+      <button type="submit" className="btn-primary w-full justify-center py-3.5 mt-2">
         <Search size={16} />
         Check Availability
       </button>
-      <p className="text-center text-xs text-muted mt-3">
-        No booking fees · Free cancellation within 24 hours
+      <p className="text-center text-xs text-white/35 mt-3">
+        No booking fees · Free cancellation within 24 hrs
       </p>
     </form>
   )

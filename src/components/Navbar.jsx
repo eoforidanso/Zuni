@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { Menu, X, Phone, ChevronDown } from 'lucide-react'
+import { Menu, X, Phone } from 'lucide-react'
 
 const navLinks = [
   { label: 'Home', path: '/' },
@@ -16,66 +16,57 @@ export default function Navbar() {
   const isHome = location.pathname === '/'
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 60)
+    const handleScroll = () => setIsScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    setIsMobileOpen(false)
-  }, [location.pathname])
+  useEffect(() => { setIsMobileOpen(false) }, [location.pathname])
 
-  // On home page, start transparent; on other pages always white
-  const isTransparent = isHome && !isScrolled && !isMobileOpen
+  // On home hero: pure glass | scrolled / other pages: white glass
+  const onHero = isHome && !isScrolled && !isMobileOpen
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ease-in-out ${
-        isTransparent
-          ? 'bg-transparent py-5'
-          : 'bg-white shadow-nav py-3'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
+        onHero
+          ? 'py-5 bg-transparent'
+          : 'py-3 glass-card border-b border-white/60 shadow-nav'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
+
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-lg bg-gold-gradient flex items-center justify-center">
+          <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
+            <div className="relative w-9 h-9 rounded-xl bg-gold-gradient flex items-center justify-center shadow-glow-gold">
               <span className="text-white font-serif font-bold text-lg leading-none">Z</span>
             </div>
-            <div className="flex flex-col">
-              <span
-                className={`font-serif font-semibold text-lg leading-tight transition-colors duration-300 ${
-                  isTransparent ? 'text-white' : 'text-charcoal'
-                }`}
-              >
+            <div>
+              <div className={`font-serif font-semibold text-base leading-tight transition-colors duration-300 ${onHero ? 'text-white' : 'text-charcoal'}`}>
                 Zuni Apartments
-              </span>
-              <span
-                className={`text-xs leading-tight transition-colors duration-300 ${
-                  isTransparent ? 'text-white/70' : 'text-muted'
-                }`}
-              >
-                Sunyani, Ghana
-              </span>
+              </div>
+              <div className={`text-[10px] leading-tight tracking-wide transition-colors duration-300 ${onHero ? 'text-white/60' : 'text-muted'}`}>
+                Sunyani · Ghana
+              </div>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-0.5">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
                 className={({ isActive }) =>
-                  `relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  `relative px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
                     isActive
-                      ? isTransparent
-                        ? 'text-gold-light'
-                        : 'text-coral'
-                      : isTransparent
-                      ? 'text-white/90 hover:text-white hover:bg-white/10'
-                      : 'text-charcoal hover:text-coral hover:bg-soft-gray'
+                      ? onHero
+                        ? 'text-gold-light bg-white/10'
+                        : 'text-coral bg-coral/8'
+                      : onHero
+                      ? 'text-white/85 hover:text-white hover:bg-white/12'
+                      : 'text-charcoal/80 hover:text-coral hover:bg-soft-gray'
                   }`
                 }
               >
@@ -84,18 +75,25 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Desktop Right */}
-          <div className="hidden lg:flex items-center gap-4">
+          {/* Desktop CTA */}
+          <div className="hidden lg:flex items-center gap-3">
             <a
               href="tel:+233538739877"
               className={`flex items-center gap-1.5 text-sm font-medium transition-colors duration-200 ${
-                isTransparent ? 'text-white/80 hover:text-white' : 'text-muted hover:text-charcoal'
+                onHero ? 'text-white/75 hover:text-white' : 'text-muted hover:text-charcoal'
               }`}
             >
-              <Phone size={14} />
+              <Phone size={13} />
               +233 538 739 877
             </a>
-            <Link to="/rooms" className="btn-primary text-sm py-2.5 px-5">
+            <Link
+              to="/rooms"
+              className={`text-sm font-semibold px-5 py-2.5 rounded-xl transition-all duration-200 inline-flex items-center gap-1.5 ${
+                onHero
+                  ? 'glass-white text-white hover:bg-white/20 border border-white/25'
+                  : 'bg-coral text-white hover:bg-coral-dark shadow-sm hover:shadow-glow-coral'
+              }`}
+            >
               Book Now
             </Link>
           </div>
@@ -103,10 +101,8 @@ export default function Navbar() {
           {/* Mobile toggle */}
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-colors duration-200 ${
-              isTransparent
-                ? 'text-white hover:bg-white/10'
-                : 'text-charcoal hover:bg-soft-gray'
+            className={`lg:hidden p-2 rounded-xl transition-colors duration-200 ${
+              onHero ? 'text-white hover:bg-white/12' : 'text-charcoal hover:bg-soft-gray'
             }`}
             aria-label="Toggle menu"
           >

@@ -27,14 +27,14 @@ export default function AboutSection() {
               <div className="space-y-4">
                 <div className="rounded-2xl overflow-hidden h-64">
                   <img
-                    src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80"
-                    alt="Zuni Apartments building exterior"
+                    src="/exterior.jpg"
+                    alt="Zuni Apartments building exterior — Sunyani, Ghana"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="rounded-2xl overflow-hidden h-40">
                   <img
-                    src="https://images.unsplash.com/photo-1556020685-ae41abfc9365?auto=format&fit=crop&w=600&q=80"
+                    src="/lounge.jpg"
                     alt="Zuni Apartments lounge area"
                     className="w-full h-full object-cover"
                   />
@@ -43,15 +43,15 @@ export default function AboutSection() {
               <div className="space-y-4 pt-10">
                 <div className="rounded-2xl overflow-hidden h-40">
                   <img
-                    src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=600&q=80"
-                    alt="Zuni Apartments kitchen"
+                    src="/kitchen.jpg"
+                    alt="Zuni Apartments fully equipped kitchen"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="rounded-2xl overflow-hidden h-64">
                   <img
-                    src="https://images.unsplash.com/photo-1585128792020-803d29415281?auto=format&fit=crop&w=600&q=80"
-                    alt="Zuni Apartments bedroom"
+                    src="/dining.jpg"
+                    alt="Zuni Apartments elegant dining area"
                     className="w-full h-full object-cover"
                   />
                 </div>
