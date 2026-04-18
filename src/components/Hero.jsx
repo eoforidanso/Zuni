@@ -8,8 +8,8 @@ export default function Hero() {
       {/* ── Background ── */}
       <div className="absolute inset-0">
         <img
-          src="/hero.jpg"
-          alt="Zuni Apartments – spacious living room with double-height ceiling, Sunyani"
+          src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=1920&q=80"
+          alt="Luxury apartment with pool view at Zuni Apartments, Sunyani"
           className="w-full h-full object-cover scale-105"
           style={{ transformOrigin: 'center center' }}
         />
@@ -36,9 +36,9 @@ export default function Hero() {
       </div>
 
       {/* ── Main content ── */}
-      <div className="relative z-10 flex-1 flex items-center pt-28 pb-16">
+      <div className="relative z-10 flex-1 flex items-center pt-24 sm:pt-28 pb-10 sm:pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 xl:gap-20 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 xl:gap-20 items-center">
 
             {/* Left — Hero text */}
             <div className="text-white">
@@ -51,7 +51,7 @@ export default function Hero() {
               </div>
 
               {/* Headline */}
-              <h1 className="font-serif text-4xl sm:text-5xl xl:text-6xl font-semibold leading-[1.1] mb-6">
+              <h1 className="font-serif text-3xl sm:text-5xl xl:text-6xl font-semibold leading-[1.1] mb-4 sm:mb-6">
                 <span className="block opacity-0 animate-fade-up" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
                   Your Luxury
                 </span>
@@ -92,7 +92,7 @@ export default function Hero() {
 
               {/* Glass stats row */}
               <div
-                className="inline-flex items-center gap-6 glass-white rounded-2xl px-6 py-4 opacity-0 animate-fade-up"
+                className="flex flex-wrap items-center gap-4 glass-white rounded-2xl px-5 py-4 opacity-0 animate-fade-up w-fit"
                 style={{ animationDelay: '0.85s', animationFillMode: 'forwards' }}
               >
                 {[
@@ -108,8 +108,8 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Right — Booking widget */}
-            <div className="w-full max-w-md mx-auto lg:mx-0 lg:ml-auto">
+            {/* Right — Booking widget (desktop only) */}
+            <div className="hidden lg:block w-full max-w-md mx-auto lg:mx-0 lg:ml-auto">
               <BookingWidget />
             </div>
 
