@@ -8,8 +8,8 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=1920&q=80"
-          alt="Luxury apartment interior at Zuni Apartments, Sunyani"
+          src="/hero.jpg"
+          alt="Zuni Apartments – spacious living room with double-height ceiling, Sunyani"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-hero-overlay" />
